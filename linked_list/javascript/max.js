@@ -15,8 +15,6 @@ LinkedList.prototype.Front = function(){
 	return this.head.val
 }
 
-
-
 LinkedList.prototype.addFront = function(val){
 	//creating a new node
 	var new_node = new Node(val);
@@ -34,10 +32,23 @@ LinkedList.prototype.addFront = function(val){
 	return this;
 }
 
+LinkedList.prototype.max = function(){
+	runner = this.head;
+	max = this.head.val
+	while(runner){
+		if(max<runner.val){
+			max = runner.val;
+		}
+		runner = runner.next;
+	}
+	return max
+}
+
 var list = new LinkedList()
 //test case
 list.addFront(5);
 list.addFront(10);
 list.addFront(1);
-console.log(list)
-console.log(list.Front())
+console.log(list.max())
+
+

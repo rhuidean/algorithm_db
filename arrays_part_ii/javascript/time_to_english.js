@@ -3,7 +3,7 @@ var time_to_eng = (min) => {
   var words_arr = ["midnight", "noon", "past", "til", "half", "quarter"];
   var first_wrd, sec_wrd;
   var time_hr = Math.trunc(min / 60);
-  var time_min = (min/60 - Math.trunc(min / 60)) * 60;
+  var time_min = min % 60;
 
   if (time_min == 15) {
     first_wrd = words_arr[5];

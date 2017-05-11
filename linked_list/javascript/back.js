@@ -1,3 +1,4 @@
+
 function Node(val){
 	this.val = val;
 	this.next = null;
@@ -7,19 +8,11 @@ function LinkedList(){
 	this.head = null;
 }
 
-
-LinkedList.prototype.Display = function(){
-	var str = "";
-	var runner = this.head;
-
+LinkedList.prototype.Front = function(){
 	if(this.head == null){
-		console.log('linked list is empty')
+		return null;
 	}
-	while(runner){
-		str = str + runner.val+',';
-		runner = runner.next
-	}
-	console.log(str)
+	return this.head.val
 }
 
 LinkedList.prototype.addFront = function(val){
@@ -39,10 +32,24 @@ LinkedList.prototype.addFront = function(val){
 	return this;
 }
 
-var list = new LinkedList();
-// list.Display()
+LinkedList.prototype.back = function(){
+	// var prev = null;
+	var runner = this.head;
+
+	while(runner){
+		if(runner.next == null){
+			return runner.val;
+		}
+		runner = runner.next;
+	}
+}
+
+var list = new LinkedList()
+//test case
+list.addFront(7);
 list.addFront(5);
 list.addFront(10);
 list.addFront(1);
-list.Display()
+console.log(list.back())
+
 

@@ -1,4 +1,4 @@
-// Given an integer representing number of minutes elapsed since midnight, return a string representing current time, in traditional spoken convention. User numerals, except specifically following words - midnight, noon, past, til, half, quarter. Examples: given 30, return "half past midnight"; given 75, return "quarter past 1 am"; given 710, return "10 til noon"; given 1000, return "20 til 5 pm".
+// Page 90. Given an integer representing number of minutes elapsed since midnight, return a string representing current time, in traditional spoken convention. User numerals, except specifically following words - midnight, noon, past, til, half, quarter. Examples: given 30, return "half past midnight"; given 75, return "quarter past 1 am"; given 710, return "10 til noon"; given 1000, return "20 til 5 pm".
 var time_to_eng = (min) => {
   var words_arr = ["midnight", "noon", "past", "til", "half", "quarter"];
   var first_wrd, sec_wrd;

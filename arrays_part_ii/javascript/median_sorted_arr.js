@@ -1,4 +1,4 @@
-// Given two arrays that are sorted but not necessarily same length, find median value. Given ([1, 5, 9], [1, 2, 3, 4, 5, 6]), return 4. If number of values is even, return average of two middle values. Given ([1, 5, 9], [1, 2, 3, 4, 5, 6]), return 3.5.
+// Page 90. Given two arrays that are sorted but not necessarily same length, find median value. Given ([1, 5, 9], [1, 2, 3, 4, 5, 6]), return 4. If number of values is even, return average of two middle values. Given ([1, 5, 9], [1, 2, 3, 4, 5, 6]), return 3.5.
 function median_sorted_arr(arr1, arr2){
   var new_arr = arr1.concat(arr2).sort()
   if (new_arr.length % 2 == 1){

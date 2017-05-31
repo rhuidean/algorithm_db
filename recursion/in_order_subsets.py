@@ -1,24 +1,24 @@
-def string_order_subsets(str):
+def string_order_subsets(string):
 	### need to build recursion module error class
-	array=[" ",1]
-	current_grouping_size=len(str)
+	string_subset_list=[]
+	
+	if isinstance(string,str):
+		string=[string[1:],string[0]]
+		return string_order_subsets(string)
 
-	if len(str)==0:
-		return array
-
-	elif current_grouping_size==0:
-		return array
+	elif len(string)==1:
+		string_subset_list.append(string[0])
 
 	else:
-		for begin_index in range(len(str)-current_grouping_size):
-			new_str=str[begin_index:begin_index+current_grouping_size]
-			array.append(new_str)
-		
-		current_grouping_size-=1
-		return string_order_subsets(str)
-		
+		string0=[string[0][1:],string[1]+string[0][0]]
+		string1=[string[0][1:],string[1]]
+		new_string_list=[string0,string1]
+		for string in new_string_list:
+			return string_order_subsets(string)	
+	# return string_subset_list
 
-print string_order_subsets("abc")
-		
-	
-	
+print string_order_subsets("abcd")
+
+string1=['cd','ab']
+string2=[string1[0][1:],string1[1]+string1[0][0]]
+print string2

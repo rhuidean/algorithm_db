@@ -2,9 +2,10 @@ def string_order_subsets(string):
 	### need to build recursion module error class
 		
 	if isinstance(string,str):
-		string=[string[1:],string[0]]
+		string0=[string[1:],string[0]]
+		string1=[string[1:],""]
 		print string
-		return string_order_subsets(string)
+		return string_order_subsets(string0)+string_order_subsets(string1)
 
 	elif string[0]=='':
 		
@@ -15,8 +16,8 @@ def string_order_subsets(string):
 		string0=[string[0][1:],string[1]+string[0][0]]
 		string1=[string[0][1:],string[1]]
 		
-		# print string0
-		# print string1
+		print string0
+		print string1
 		return string_order_subsets(string0)+string_order_subsets(string1)	
 	
 

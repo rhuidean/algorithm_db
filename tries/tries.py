@@ -17,13 +17,52 @@ class Triset(object):
 	def __init__(self):
 		self.root = self.new_node
 
-# triset1=Triset()
-# print "{} {} {}".format(triset1.root.key,triset1.root.value,triset1.root.children)
+	def insert(self,string):
+		original_string = string
+		current_node = self.root 
 
-# triset1.root.key="a"
-# print triset1.root
+		current_character=string[0]
+		string=string[1:]
 
+		if current_character not in self.root.children.keys():
+			while len(string) >= 0:
+				new_node=TrieNode()
+				new_node.key=current_character
+				### Adding value to the node case: check if current_character is the last character in the original string 
+				if len(string) == 0:
+					new_node.value=original_string
+				current_node.children[current_character]=new_node
+				if len(string) == 0:
+					return self
+				
+				## loop through characters of new subset strings
+				current_node=current_node.children[current_character]
+				current_character=string[0]
+				string=string[1:]
 
-# string = "abc"
+		
+		## otherwise go to one of root's children keys that is equal to the current character i.e. the first character of the original string.
+		else:
 
-# print len(string[3:])
+			current_node=current_node.children[current_character]
+
+			### loop through the pre-inserted string's characters and insert new characters that does not exist.
+			while len(string) > 0:
+				current_character=string[0]
+				string=string[1:]
+
+				if current_character not in current_node.children.keys():
+					new_node=TrieNode()
+					new_node.key=current_character
+					### Adding value to the node case: check if current_character is the last character in the original string 
+					if len(string) == 0 and current_node.value!=original_string:
+						new_node.value=original_string
+					current_node.children[current_character]=new_node
+					return self
+
+				elif len(string) == 0:
+					return self
+
+				current_node=current_node.children[current_character]
+
+	

@@ -82,6 +82,19 @@ class Triset(object):
 
 		return False		
 
+	def first(self):
+		### create an empty first_value list
+		first_value=[]
+		current_node=self.root
+
+		### loop through pre-inserted characters and retrieve first characters of each alphabetically sorted characters.
+		while current_node.children.keys():
+			current_character=[key for key in sorted(current_node.children.keys())][0]
+			first_value.append(current_character)
+			current_node=current_node.children[current_character]
+
+		return ''.join(first_value)
+		current_node=current_node[current_character]
 
 
 # 	# def display(self):
@@ -114,3 +127,6 @@ print T1.contains('JasonM')
 print T1.root.children["B"].children['a'].children['t'].key
 string="XYX"
 print string.endswith("X")
+
+print T1.first()
+

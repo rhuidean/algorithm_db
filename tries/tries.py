@@ -66,3 +66,51 @@ class Triset(object):
 				current_node=current_node.children[current_character]
 
 	
+	def contains(self,string):
+		current_node=self.root
+		current_character=string[0]
+		string=string[1:]
+
+		### check if current character is in current_node's children dictionary
+		while current_character in current_node.children.keys():
+			### loop through and check next character in the string
+			current_node=current_node.children[current_character]
+			current_character=string[0]
+			string=string[1:]
+			if len(string)==0 and current_character in current_node.children.keys():
+				return True
+
+		return False		
+
+
+
+# 	# def display(self):
+# 	# 	if self.root.children.keys():
+# 	# 		node = self.root
+# 	# 		if node.children.keys()==None:
+# 	# 			return self
+	
+# 	# 		for key in node.children.keys():
+# 	# 			print node.children[key].key
+# 	# 			node =node.children[key]
+# 	# 			return display(self.node)
+
+# 		# else:
+# 		# 	print "No strings has been set."
+# 		# 	return self
+
+T1=Triset()
+T1.insert('Jason')
+
+print T1.root.children['J'].children['a'].children['s'].children['o'].children
+T1.insert('JasonM')
+
+print T1.root.children['J'].children['a'].children['s'].children['o'].children['n'].children
+
+T1.insert('Bat')
+print T1.root.children
+
+print T1.contains('JasonM')
+print T1.root.children["B"].children['a'].children['t'].key
+string="XYX"
+print string.endswith("X")

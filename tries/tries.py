@@ -92,10 +92,21 @@ class Triset(object):
 			current_character=[key for key in sorted(current_node.children.keys())][0]
 			first_value.append(current_character)
 			current_node=current_node.children[current_character]
+			if current_node.value:
+				return ''.join(first_value)
+		
+	def last(self):
+		### create an empty last_value list
+		last_value=[]
+		current_node=self.root
 
-		return ''.join(first_value)
-		current_node=current_node[current_character]
-
+		### loop through pre-inserted characters and retrieve first characters of each alphabetically reverse sorted characters.
+		while current_node.children.keys():
+			current_character=[key for key in sorted(current_node.children.keys(),reverse=True)][0]
+			last_value.append(current_character)
+			current_node=current_node.children[current_character]
+			if not current_node.children:
+				return ''.join(last_value)
 
 # 	# def display(self):
 # 	# 	if self.root.children.keys():
@@ -120,7 +131,7 @@ T1.insert('JasonM')
 
 print T1.root.children['J'].children['a'].children['s'].children['o'].children['n'].children
 
-T1.insert('Bat')
+T1.insert('Bat').insert('BatY')
 print T1.root.children
 
 print T1.contains('JasonM')
@@ -129,4 +140,4 @@ string="XYX"
 print string.endswith("X")
 
 print T1.first()
-
+print T1.last()

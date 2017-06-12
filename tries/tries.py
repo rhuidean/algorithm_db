@@ -108,6 +108,19 @@ class Triset(object):
 			if not current_node.children:
 				return ''.join(last_value)
 
+	def size(self):
+		count=0
+
+		### loop through all the character nodes and count the number of node values.
+		current_node = self.root
+
+		while len(current_node.children)>0:
+			for key in current_node.children.keys():
+				if current_node.children[key].value!=None:
+					count +=1
+				current_node=current_node.children[key]
+
+		return count
 # 	# def display(self):
 # 	# 	if self.root.children.keys():
 # 	# 		node = self.root
@@ -141,3 +154,5 @@ print string.endswith("X")
 
 print T1.first()
 print T1.last()
+
+print T1.size()

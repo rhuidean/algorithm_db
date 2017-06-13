@@ -108,19 +108,29 @@ class Triset(object):
 			if not current_node.children:
 				return ''.join(last_value)
 
-	def size(self):
-		count=0
+	def test(self, n):
+		if n == 0:
+			return
+		print 'testing'
+		self.test(n - 1)
 
+	def size(self,current_node,count=0):
 		### loop through all the character nodes and count the number of node values.
-		current_node = self.root
 
-		while len(current_node.children)>0:
-			for key in current_node.children.keys():
-				if current_node.children[key].value!=None:
-					count +=1
-				current_node=current_node.children[key]
+		if len(current_node.children)==0:
+			return count
 
-		return count
+		for key in current_node.children.keys():
+			if current_node.children[key].value!=None:
+				count +=1
+			print count
+			print key
+
+			child_node=current_node.children[key]
+			print 'CHILD NODE:', child_node.value
+			
+			self.size(child_node,count)
+
 # 	# def display(self):
 # 	# 	if self.root.children.keys():
 # 	# 		node = self.root
@@ -137,6 +147,7 @@ class Triset(object):
 # 		# 	return self
 
 T1=Triset()
+T1.test(3)
 T1.insert('Jason')
 
 print T1.root.children['J'].children['a'].children['s'].children['o'].children
@@ -155,4 +166,10 @@ print string.endswith("X")
 print T1.first()
 print T1.last()
 
-print T1.size()
+print T1.size(T1.root)
+# print len(T1.root.children)
+# print T1.size(T1.root)
+# print T1.root.children
+# print T1.root.children['B'].value
+
+# print "XYA"[-1]

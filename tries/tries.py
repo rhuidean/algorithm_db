@@ -114,22 +114,25 @@ class Triset(object):
 		print 'testing'
 		self.test(n - 1)
 
-	def size(self,current_node,count=0):
+	def size(self,current_node,count=0, arr=[]):
 		### loop through all the character nodes and count the number of node values.
-
+		print 'count upper scope:', count
 		if len(current_node.children)==0:
-			return count
+			# print count
+			arr.append(count)
 
 		for key in current_node.children.keys():
 			if current_node.children[key].value!=None:
 				count +=1
-			print count
-			print key
+			# print count
+			print 'key: ', key
 
 			child_node=current_node.children[key]
 			print 'CHILD NODE:', child_node.value
 			
-			self.size(child_node,count)
+			self.size(child_node,count, arr)
+		print arr
+		return sum(arr)
 
 # 	# def display(self):
 # 	# 	if self.root.children.keys():

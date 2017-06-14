@@ -24,17 +24,32 @@ class BST(object):
 				if current_node.left==None:
 					current_node.left=new_node
 					return
+
+				elif current_node.val==new_node.val:
+						shift_node=current_node.left
+						new_node.left=shift_node
+						current_node.left=new_node
+						return
 				else:
+					print "new",new_node.val
+					print "curr",current_node.val
 					current_node=current_node.left
 			
 			else:
 				if current_node.right==None:
 					current_node.right=new_node
 					return
+
+				elif current_node.val==new_node.val: 
+					shift_node==current_node.right
+					new_node.right=shift_node
+					current_node.right=new_node
+					return
 				else:
 					current_node=current_node.right
 
-		
+	def contains(self,charcter):
+			
 
 b1=BST()
 print b1.root
@@ -45,4 +60,5 @@ b1.add(3)
 print b1.root.right.val
 print b1.root.left.val
 b1.add(2)
-print b1.root.left.right.val
+print b1.root.left.val
+print b1.root.left.left.val

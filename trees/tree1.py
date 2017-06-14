@@ -48,7 +48,20 @@ class BST(object):
 				else:
 					current_node=current_node.right
 
-	def contains(self,charcter):
+	def contains(self,val):
+		current_node=self.root
+
+		while current_node!=None:
+			if current_node.val==val:
+				return True
+
+			else:
+				if current_node.val > val:
+					current_node=current_node.left
+
+				else:
+					current_node=current_node.right
+		return False
 			
 
 b1=BST()
@@ -62,3 +75,5 @@ print b1.root.left.val
 b1.add(2)
 print b1.root.left.val
 print b1.root.left.left.val
+
+print b1.contains(7)

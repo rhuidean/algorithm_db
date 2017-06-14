@@ -70,6 +70,14 @@ class BST(object):
 			current_node=current_node.left
 
 		return current_node.val
+
+	def max(self):
+		current_node=self.root
+
+		while current_node.right!=None:
+			current_node=current_node.right
+
+		return current_node.val
 			
 
 b1=BST()
@@ -86,3 +94,4 @@ print b1.root.left.left.val
 
 print b1.contains(7)
 print b1.min()
+print b1.max()

@@ -62,6 +62,14 @@ class BST(object):
 				else:
 					current_node=current_node.right
 		return False
+
+	def min(self):
+		current_node=self.root
+
+		while current_node.left!=None:
+			current_node=current_node.left
+
+		return current_node.val
 			
 
 b1=BST()
@@ -77,3 +85,4 @@ print b1.root.left.val
 print b1.root.left.left.val
 
 print b1.contains(7)
+print b1.min()

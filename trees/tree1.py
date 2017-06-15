@@ -78,8 +78,32 @@ class BST(object):
 			current_node=current_node.right
 
 		return current_node.val
-			
 
+	def isempty(self):
+		if self.root==None:
+			return True
+		else:
+			return False
+			
+	def size(self,current_node,count=[]):
+		if self.isempty():
+			return 0
+
+		else:
+			count.append(1)
+
+			current_node_children=[]
+			if current_node.left!=None:
+				current_node_children.append(current_node.left)
+
+			if current_node.right!=None:
+				current_node_children.append(current_node.right)
+			
+			for child in current_node_children:
+				self.size(child,count)
+
+			return sum(count)
+		
 b1=BST()
 print b1.root
 b1.add(2)
@@ -95,3 +119,4 @@ print b1.root.left.left.val
 print b1.contains(7)
 print b1.min()
 print b1.max()
+print b1.size(b1.root)

@@ -1,4 +1,4 @@
-class ListNode(object):
+class ListNode:
 	'''Node Object'''
 	def __init__(self, value):
 		self.val = value
@@ -9,7 +9,7 @@ b = ListNode(4)
 # print "{} {} {}".format(b,b.val,b.next)
 
 
-class LinkedList():
+class LinkedList:
 	def __init__(self):
 		self.head = None
 
@@ -33,10 +33,10 @@ class LinkedList():
 		return False
 
 	def removeFront(self):
-		if self.head == None:
-			return None
-		elif self.head.next == None:
-			return None
+		if self.head == None or self.head.next == None:
+			self.head = None
+			return self
+		
 		else:
 			self.head = self.head.next 
 			return self
